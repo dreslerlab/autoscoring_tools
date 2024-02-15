@@ -1,3 +1,3 @@
-# Tools & scripts for automatic sleep scripts
+# Tools & scripts for automatic sleep scoring
 
 TODO: add description
