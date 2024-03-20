@@ -1,0 +1,112 @@
+INFO | 2024/03/20 11:08:42 | Running with args: {'input file path': 'D:/LD-EEG_data/BIGLD/2_Christian_Tausch/ZUG_05_Schmitt_2.edf', 'output file path': './hypnogram.npy', 'log_file_path': None, 'print_hypnogram': False, 'overwrite_file': True, 'model': 'U-Sleep v1.0', 'data_per_prediction': 3840, 'with_confidence_scores': True, 'anonymize_before_upload': True, 'channel_groups': None, 'api_token_env_name': 'USLEEP_API_TOKEN', 'token': None, 'stream_log': False, 'log_level': 'INFO'}
+INFO | 2024/03/20 11:08:42 | Input file:          D:\LD-EEG_data\BIGLD\2_Christian_Tausch\ZUG_05_Schmitt_2.edf
+INFO | 2024/03/20 11:08:42 | Output file:         c:\Users\nicade\Documents\repos\autoscoring_tools\hypnogram.npy
+INFO | 2024/03/20 11:08:42 | Prediction log file: None
+INFO | 2024/03/20 11:08:42 | Validating auth token...
+INFO | 2024/03/20 11:08:42 | Server response to GET: pong
+INFO | 2024/03/20 11:08:42 | Creating throw-away session '1d00375a40d4'
+INFO | 2024/03/20 11:08:42 | Setting model 'U-Sleep v1.0'
+INFO | 2024/03/20 11:08:42 | Server response to GET: [JSON data] {'models': ['U-Sleep v1.0', 'U-Sleep v2.0', 'U-Sle ...
+INFO | 2024/03/20 11:08:42 | Server response to POST: New model 'U-Sleep v1.0' selected.
+INFO | 2024/03/20 11:08:42 | Uploading file at path D:\LD-EEG_data\BIGLD\2_Christian_Tausch\ZUG_05_Schmitt_2.edf. Please wait.
+INFO | 2024/03/20 11:08:42 | Anonymizing file at D:\LD-EEG_data\BIGLD\2_Christian_Tausch\ZUG_05_Schmitt_2.edf.
+INFO | 2024/03/20 11:08:42 | -- Temp file name: C:\Users\nicade\AppData\Local\Temp\tmphb4m9d_z.edf
+INFO | 2024/03/20 11:08:43 | -- Anonymizing patient ID, sex, birthdate and name fields.
+INFO | 2024/03/20 11:08:43 | -- Anonymizing start date and admin-, tech and equipment codes.
+INFO | 2024/03/20 11:08:53 | Server response to POST: New file uploaded.
+INFO | 2024/03/20 11:08:53 | Server response to GET: [JSON data] {'channels': ['Event', 'LOC', 'ECG', 'CHIN1', 'A1' ...
+INFO | 2024/03/20 11:08:53 | The server has the following info the uploaded file:
+{'channels': ['Event',
+              'LOC',
+              'ECG',
+              'CHIN1',
+              'A1',
+              'CHIN2',
+              'n1',
+              'n2',
+              'C3',
+              'n3',
+              'n4',
+              'n5',
+              'n6',
+              'n7',
+              'ROC',
+              'n8',
+              'n9',
+              'A2',
+              'n10',
+              'n11',
+              'n12',
+              'C4',
+              'n13',
+              'X1',
+              'X2',
+              'DIF1',
+              'DIF2',
+              'DIF3',
+              'DIF4',
+              'DC1',
+              'DC2',
+              'DC3',
+              'DC4',
+              'OSAT',
+              'PR'],
+ 'date_recorded': 'Thu, 01 Jan 1970 01:00:00 GMT',
+ 'date_uploaded': 'Wed, 20 Mar 2024 11:08:53 GMT',
+ 'file_name': 'tmphb4m9d_z.edf',
+ 'file_sha256': '0d36300806fa0cf8ee604783268825f110ead2bff74d5ffb700643bdc38ae50d',
+ 'inferred_channel_types': ['OTHER',
+                            'EOG',
+                            'OTHER',
+                            'OTHER',
+                            'MASTOID',
+                            'OTHER',
+                            'OTHER',
+                            'OTHER',
+                            'EEG',
+                            'OTHER',
+                            'OTHER',
+                            'OTHER',
+                            'OTHER',
+                            'OTHER',
+                            'EOG',
+                            'OTHER',
+                            'OTHER',
+                            'MASTOID',
+                            'OTHER',
+                            'OTHER',
+                            'OTHER',
+                            'EEG',
+                            'OTHER',
+                            'OTHER',
+                            'OTHER',
+                            'OTHER',
+                            'OTHER',
+                            'OTHER',
+                            'OTHER',
+                            'OTHER',
+                            'OTHER',
+                            'OTHER',
+                            'OTHER',
+                            'OTHER',
+                            'OTHER'],
+ 'length': 8849600,
+ 'num_channels': 35,
+ 'sample_rate': 200}
+INFO | 2024/03/20 11:08:53 | Server response to GET: [JSON data] {'channels': ['Event', 'LOC', 'ECG', 'CHIN1', 'A1' ...
+INFO | 2024/03/20 11:08:53 | Getting configuration
+INFO | 2024/03/20 11:08:53 | Server response to GET: [JSON data] {'available_channels': ['Event', 'LOC', 'ECG', 'CH ...
+INFO | 2024/03/20 11:08:53 | Server response to GET: [JSON data] {'MAX_CHANNEL_COMBINATIONS': 24} ...
+INFO | 2024/03/20 11:08:53 | Auto-inferring channel groups...
+-- Channels in file:        ['Event', 'LOC', 'ECG', 'CHIN1', 'A1', 'CHIN2', 'n1', 'n2', 'C3', 'n3', 'n4', 'n5', 'n6', 'n7', 'ROC', 'n8', 'n9', 'A2', 'n10', 'n11', 'n12', 'C4', 'n13', 'X1', 'X2', 'DIF1', 'DIF2', 'DIF3', 'DIF4', 'DC1', 'DC2', 'DC3', 'DC4', 'OSAT', 'PR']
+-- Inferred types:          ['OTHER', 'EOG', 'OTHER', 'OTHER', 'MASTOID', 'OTHER', 'OTHER', 'OTHER', 'EEG', 'OTHER', 'OTHER', 'OTHER', 'OTHER', 'OTHER', 'EOG', 'OTHER', 'OTHER', 'MASTOID', 'OTHER', 'OTHER', 'OTHER', 'EEG', 'OTHER', 'OTHER', 'OTHER', 'OTHER', 'OTHER', 'OTHER', 'OTHER', 'OTHER', 'OTHER', 'OTHER', 'OTHER', 'OTHER', 'OTHER']
+-- Required types:          ['Any EEG', 'Any EOG']
+-- Matching channels:       [['C3', 'C4'], ['LOC', 'ROC']]
+-- Inferred groups:         (N=4) [('C3', 'LOC'), ('C3', 'ROC'), ('C4', 'LOC'), ('C4', 'ROC')]
+-- Max allowed groups:      24
+-- Final groups:            (N=4 [('C3', 'LOC'), ('C3', 'ROC'), ('C4', 'LOC'), ('C4', 'ROC')]
+INFO | 2024/03/20 11:08:53 | Server response to POST: Prediction started.
+INFO | 2024/03/20 11:09:21 | Server response to GET: [JSON data] {'color_tag': 'status_green', 'final_status': True ...
+INFO | 2024/03/20 11:09:22 | Server response to GET: [JSON data] {'classes': {'0': 'Wake', '1': 'N1', '2': 'N2', '3 ...
+INFO | 2024/03/20 11:09:22 | Saving file to c:\Users\nicade\Documents\repos\autoscoring_tools\hypnogram.npy
+INFO | 2024/03/20 11:09:22 | Server response to DELETE: Sleep staging session removed. The uploaded file and predictions were deleted.
