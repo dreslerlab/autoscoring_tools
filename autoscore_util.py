@@ -7,6 +7,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from pathlib import Path
 import yasa
+import subprocess
 
 stages = ["WAKE", "REM", "N1", "N2", "N3"]
 
@@ -41,3 +42,26 @@ def stackplot_and_hypnogram(hypno_with_conf, hypno_no_conf):
     hypnogramplot(hypno_no_conf, axs[1])
     plt.tight_layout()
     plt.show()
+
+def run_autoscoring(token, datapath, outfile, with_confidences=False):
+
+    if with_confidences:
+        os.environ['USLEEP_API_TOKEN'] = token
+        command = f"usleep-api {datapath} {outfile} --anonymize --with-confidence-scores --overwrite-file"
+        with open("CLI_log.txt", "w") as log_file:
+            subprocess.run(command, shell=True, stdout=log_file, stderr=subprocess.STDOUT)
+        return np.load(outfile)
+    else:
+        # Create an API object with API token stored in environment variable
+        api = USleepAPI(api_token=token)
+
+        # Predict on anonymized PSG and save hypnogram to file
+        # this takes a little while, around a minute depending on the file
+        hypnogram, log = api.quick_predict(
+            input_file_path=Path(datapath),
+            output_file_path=Path(outfile),
+            anonymize_before_upload=True
+        )
+
+        # put in correct format
+        return hypnogram["hypnogram"]
