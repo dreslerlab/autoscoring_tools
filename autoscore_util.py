@@ -43,6 +43,14 @@ def stackplot_and_hypnogram(hypno_with_conf, hypno_no_conf):
     plt.tight_layout()
     plt.show()
 
+def stackplot_and_hypnogram(hypno_with_conf):
+    hypno_no_conf = [np.argmax(c) for c in hypno_with_conf]
+    f, axs = plt.subplots(2, 1, figsize=(12,4.5), sharex=True)
+    stackplot_confidences_from_df(hypno_with_conf, axs[0], xlabel=False)
+    hypnogramplot(hypno_no_conf, axs[1])
+    plt.tight_layout()
+    plt.show()
+
 def run_autoscoring(token, datapath, outfile, with_confidences=False):
 
     if with_confidences:
@@ -52,6 +60,7 @@ def run_autoscoring(token, datapath, outfile, with_confidences=False):
             subprocess.run(command, shell=True, stdout=log_file, stderr=subprocess.STDOUT)
         return np.load(outfile)
     else:
+        # TODO problem this calls the normal usleep function, not the patched one
         # Create an API object with API token stored in environment variable
         api = USleepAPI(api_token=token)
 
@@ -60,8 +69,9 @@ def run_autoscoring(token, datapath, outfile, with_confidences=False):
         hypnogram, log = api.quick_predict(
             input_file_path=Path(datapath),
             output_file_path=Path(outfile),
-            anonymize_before_upload=True
+            anonymize_before_upload=True,
+            with_confidence_scores=True
         )
 
         # put in correct format
-        return hypnogram["hypnogram"]
+        return hypnogram
